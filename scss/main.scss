@@ -1,0 +1,208 @@
+@import 'vars';
+@import 'keyframes';
+
+* {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: $font_size_main;
+    min-height: 100vh;
+    background: linear-gradient(#edf2f2, #141515);
+}
+
+.header,
+.main {
+    padding: 0 calc(50vw - 580px);
+
+    @media screen and (max-width: 1200px) {
+        padding: 0 calc(50vw - 480px);
+    }
+
+    @media screen and (max-width: 992px) {
+        padding: 0 calc(50vw - 420px);
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 0 15px;
+    }
+}
+
+.header {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    position: relative;
+
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        display: inline-block;
+        width: 70%;
+        height: 1px;
+        background: linear-gradient(#848f8f, #596059);
+    }
+}
+
+.section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid #000;
+}
+
+.circle {
+    position: relative;
+    height: 300px;
+
+    &__inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+
+        background: linear-gradient(45deg, #414441,#edf2f2);
+        box-shadow: -4px 5px 7px 0px #3e5054;
+
+        animation: moveCircle 4s linear 2s infinite;
+
+        &:hover {
+            cursor: pointer;
+            animation-play-state: paused;
+        }
+    }
+
+    // &:hover > .circle__inner {
+    //     transform: translate(50px, 40px);
+    // }
+}
+
+.square {
+    position: relative;
+    margin: 20px 0;
+    height: 280px;
+
+    &__inner {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%);
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        background: #2f4b4b; 
+        overflow: hidden;
+        &::after {
+            content: "Beetroot";
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 80%;
+            height: 80%;
+            color: #eef6f0;
+            background: #804180;
+            font-size: 1.22rem;
+            letter-spacing: 2px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+        }
+        &::before {
+            content: "";
+            position: absolute;
+            top: -42%;
+            left: -42%;
+            width: 170%;
+            height: 170%;
+            background: conic-gradient(#ffddff,#d5a0d5, #975a97, #860f86);
+            animation: rotateSquare linear 3s infinite;
+        }
+        &:hover::before {
+            cursor: pointer;
+            animation-play-state: paused;
+        }
+    }
+}
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+.swing {
+    display: flex;
+
+    &__item {
+        height: 35px;
+        width: 35px;
+        border-radius: 50%;
+        box-shadow: 0 0 3px 1px #9a929a;
+
+        &_left {
+            animation: moveBallLeft .5s ease-in-out infinite alternate;
+        }
+
+        &_right {
+            animation: moveBallRight .5s ease-in-out infinite alternate;
+        }
+
+        &:first-of-type {
+            background: linear-gradient(#7d8c8d 0%, #f2f4f5 100%);
+          }
+      
+          &:nth-of-type(2) {
+            background: linear-gradient(#5d6768 0%, #eaeef0 100%);
+          }
+      
+          &:nth-of-type(3) {
+            background: linear-gradient(#677171 0%, #dce1e4 100%);
+          }
+      
+          &:nth-of-type(4) {
+            background: linear-gradient(#606b6c 0%, #dce2e4 100%);
+          }
+      
+          &:nth-of-type(5) {
+            background: linear-gradient(#677171 0%, #dce1e4 100%);
+          }
+      
+          &:nth-of-type(6) {
+            background: linear-gradient(#5d6768 0%, #eaeef0 100%);
+          }
+      
+          &:last-of-type {
+            background: linear-gradient(#7d8c8d 0%, #f2f4f5 100%);
+          }
+    }
+}
+
+.shadow {
+    padding-top: 25px;
+    display: flex;
+  
+    &__item {
+      width: 35px;
+      height: 0.35em;
+      border-radius: 50%;
+      background: #739494;
+      filter: blur(1px);
+
+      &_left {
+        animation: moveShadowLeft .5s ease-in-out infinite alternate;
+      }
+      &_right {
+        animation: moveShadowRight .5s ease-in-out infinite alternate;
+      }
+    }
+}  
